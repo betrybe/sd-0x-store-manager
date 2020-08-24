@@ -11,9 +11,9 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 ### ANTES DE COMEÇAR A DESENVOLVER:
 
 1. Clone o repositório
-  * `git clone https://github.com:tryber/sd-0x-projetct-storage-manager.git`.
+  * `git clone https://github.com:tryber/sd-0x-project-storage-manager.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-0x-projetct-storage-manager`
+    * `cd sd-0x-project-storage-manager`
 
 2. Instale as dependências [**Caso existam**]
   * `npm install`
@@ -25,7 +25,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     * Exemplo: `git checkout master`
   * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-projetct-storage-manager`
+    * Exemplo: `git checkout -b joaozinho-project-storage-manager`
 
 4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
@@ -40,16 +40,16 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-projetct-storage-manager`
+  * Usando o exemplo anterior: `git push -u origin joaozinho-project-storage-manager`
 
 6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-projetct-storage-manager/pulls)
+  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-storage-manager/pulls)
   * Clique no botão verde _"New pull request"_
   * Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
   * Clique no botão verde _"Create pull request"_
   * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-projetct-storage-manager/pulls) e confira que o seu _Pull Request_ está criado
+  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-storage-manager/pulls) e confira que o seu _Pull Request_ está criado
 
 ---
 
