@@ -5,7 +5,7 @@ on:
 jobs:
   evaluator_job:
     name: Evaluator Job
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     services:
       mongodb:
         image: mongo
@@ -24,10 +24,10 @@ jobs:
         if: steps.wait-for-build.outputs.conclusion == 'success'
       - name: Evaluator step
         id: evaluator
-        uses: betrybe/jest-evaluator-action@v5
+        uses: betrybe/jest-evaluator-action@configura-npm-start
         if: steps.wait-for-build.outputs.conclusion == 'success'
         with:
-          repository-test-name: 'betrybe/sd-0x-project-store-manager-tests'
+          repository-test-name: 'betrybe/sd-0x-store-manager-tests'
           repository-test-branch: 'master'
           npm-start: true
       - name: Store evaluation step
