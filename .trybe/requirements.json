@@ -1,7 +1,7 @@
 {
   "requirements": [
     {
-      "description": "1 - Crie um endpoint para o cadastramento de produtos",
+      "description": "1 - Crie um endpoint para o cadastro de produtos",
       "bonus": false
     },
     {
