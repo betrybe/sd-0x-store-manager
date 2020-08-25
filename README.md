@@ -186,6 +186,7 @@ O retorno da API de um produto cadastrado com sucesso deverá ser:
 
 ### Requisição de Cadastro de Produtos:
 
+O projeto deve rodar na porta `http://localhost/30000`
 
 ![Criar produtos](./public/criarProdutos.png)
 
