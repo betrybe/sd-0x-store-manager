@@ -13,7 +13,7 @@ describe('9 - Atualize a quantidade de produtos', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = connection.db('StorageManager');
+    db = connection.db('StoreManager');
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
   });
@@ -119,7 +119,7 @@ describe('10 - Valide a quantidade de produtos', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = connection.db('StorageManager');
+    db = connection.db('StoreManager');
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
   });

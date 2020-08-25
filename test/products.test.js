@@ -14,7 +14,7 @@ describe('1 - Crie um endpoint para o cadastro de produtos', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = connection.db('StorageManager');
+    db = connection.db('StoreManager');
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
   });
@@ -146,7 +146,7 @@ describe('2 - Crie um endpoint para listar os produtos', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = connection.db('StorageManager');
+    db = connection.db('StoreManager');
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
   });
@@ -239,7 +239,7 @@ describe('3 - Crie um endpoint para atualizar um produto', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = connection.db('StorageManager');
+    db = connection.db('StoreManager');
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
   });
@@ -401,7 +401,7 @@ describe('4 - Crie um endpoint para deletar um produto', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = connection.db('StorageManager');
+    db = connection.db('StoreManager');
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
   });
