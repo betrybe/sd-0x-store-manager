@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do projeto Storage-Manager!
+# Boas vindas ao repositório do projeto Store Manager!
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por Slack! #vqv 🚀
 
@@ -11,9 +11,9 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 ### ANTES DE COMEÇAR A DESENVOLVER:
 
 1. Clone o repositório
-  * `git clone https://github.com:tryber/sd-0x-project-storage-manager.git`.
+  * `git clone https://github.com:tryber/sd-0x-store-manager.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-0x-project-storage-manager`
+    * `cd sd-0x-store-manager`
 
 2. Instale as dependências [**Caso existam**]
   * `npm install`
@@ -25,7 +25,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     * Exemplo: `git checkout master`
   * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
     * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-project-storage-manager`
+    * Exemplo: `git checkout -b joaozinho-sd-0x-store-manager`
 
 4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
   * Verifique que as mudanças ainda não estão no _stage_
@@ -40,16 +40,16 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-project-storage-manager`
+  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-0x-store-manager`
 
 6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-storage-manager/pulls)
+  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-store-manager/pulls)
   * Clique no botão verde _"New pull request"_
   * Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
   * Clique no botão verde _"Create pull request"_
   * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
   * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-storage-manager/pulls) e confira que o seu _Pull Request_ está criado
+  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-store-manager/pulls) e confira que o seu _Pull Request_ está criado
 
 ---
 
@@ -105,7 +105,7 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 ## Requisitos Obrigatórios:
 
-### 💡Veja o exemplo a seguir de como o projeto pode se parecer depois de pronto. Lembre-se que você pode ~~e deve~~ ir além para deixar o projeto com a sua cara e impressionar à todos!
+### 💡Veja o exemplo a seguir de como o projeto pode se parecer depois de pronto. Lembre-se que você pode ~~e deve~~ ir além para deixar o projeto com a sua cara e impressionar à todos e a todas!
 
 ## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
 
@@ -121,7 +121,7 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 ### Conexão com o Banco:
 
-A conexão do banco devera conter o seguinte parâmetros:
+A conexão do banco devera conter os seguintes parâmetros:
 
 ```javascript
 const MONGO_DB_URL = 'mongodb://localhost:27017';
@@ -130,25 +130,36 @@ const DB_NAME = 'StorageManager';
  ###  Tabelas
 O banco terá duas tabelas: produtos e vendas 
 
-Tabela produtos deverá ter o seguinte nome: `products`
+A tabela de produtos deverá ter o seguinte nome: `products`
 
-Os campos da tabela `products` desse formato:
+Os campos da tabela `products` terão esse formato:
+
+```json
+{ "name" : "Produto Silva", "quantity" : 10 }
+```
+
+A resposta que do insert deve retornar após a criação é essa:
 
 ```json
 { "_id" : ObjectId("5f43cbf4c45ff5104986e81d"), "name" : "Produto Silva", "quantity" : 10 }
 ```
 (O _id será gerado automaticamente)
 
-Tabela vendas deverá ter o seguinte nome: `sales`
+A tabela de vendas deverá ter o seguinte nome: `sales`
 
-Os campos da tabela `sales` desse formato:
+Os campos da tabela `sales` terão esse formato:
 
+```json
+{ "itensSold" : [ { "productId" : "5f43cbf4c45ff5104986e81d", "quantity" : 2 } ] }
+```
+
+A resposta que do insert deve retornar após a criação é essa:
 ```json
 { "_id" : ObjectId("5f43cc53c45ff5104986e81e"), "itensSold" : [ { "productId" : "5f43cbf4c45ff5104986e81d", "quantity" : 2 } ] }
 ```
 (O _id será gerado automaticamente)
 
-### 1 - Crie um endpoint para o cadastramento de produtos
+### 1 - Crie um endpoint para o cadastro de produtos
 
 - O endpoint deve ser acessível através do caminho (`/products`);
 
@@ -163,12 +174,12 @@ Os campos da tabela `sales` desse formato:
 }
 ```
 
-O retorno de um produto cadastrado com sucesso deverá ser:
+O retorno da API de um produto cadastrado com sucesso deverá ser:
 
 ```json
 {
   "_id": "5f43a7ca92d58904914656b6",
-  "name": "Produto do Batistaa",
+  "name": "Produto do Batista",
   "quantity": 100
 }
 ```
@@ -191,44 +202,44 @@ O retorno de um produto cadastrado com sucesso deverá ser:
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se não consigo criar um produto com o nome menor que 5 caracteres]**
+**[Será validado que não é possível criar um produto com o nome menor que 5 caracteres]**
 
-Se o produto tiver o nome menor que cinco caracteres o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver o nome menor que cinco caracteres o resultado retornado deverá ser comforme exibido abaixo, com um status http `422`:
 
 
 ![Nome menor que 5](./public/nomeMenorQue5.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.)
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se não consigo criar um produto com o mesmo nome]**
+**[Será validado que não é possível criar um produto com o mesmo nome de outro já existente]**
 
-Se o produto tiver o mesmo nome o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver o mesmo nome o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Mesmo nome](./public/mesmonome.png)
 
-**[Validar se não consigo criar um produto com quantidade menor que zero]**
+**[Será validado que não é possível criar um produto com quantidade menor que zero]**
 
-Se o produto tiver uma quantidade menor que zero o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver uma quantidade menor que zero o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Menor que 0](./public/menorque0.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.)
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se não consigo criar um produto com quantidade igual a zero]**
+**[Será validado que não é possível criar um produto com quantidade igual a zero]**
 
-Se o produto tiver uma quantidade igual a zero o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver uma quantidade igual a zero o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Igual a zero](./public/igualazero.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.)
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se não consigo criar um produto com uma string no campo quantidade]**
+**[Será validado que não é possível criar um produto com uma string no campo quantidade]**
 
-Se o produto tiver uma quantidade com o valor em string o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver uma quantidade com o valor em string o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Quantidade como string](./public/quantidadecomostring.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.)
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se consigo criar um produto com sucesso]**
+**[Será validado que é possível criar um produto com sucesso]**
 
-Se o produto for cadastrado com sucesso o resultado mostrado deverá ser esse abaixo e com status 201:
+Se o produto for cadastrado com sucesso o resultado retornado deverá ser conforme exibido abaixo, com status http `201`:
 
 ![Criar produtos](./public/criarProdutos.png)
 
@@ -242,21 +253,21 @@ Se o produto for cadastrado com sucesso o resultado mostrado deverá ser esse ab
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se todos produtos estão sendo retornados]**
+**[Será validado que todos produtos estão sendo retornados]**
 
-Se a lista retornar com sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Lista de produtos](./public/listadeprodutos.png)
 
-**[Validar se consigo listar um determinado produto]**
+**[Será validado que é possível listar um determinado produto]**
 
-Se a lista retornar com sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Listar um produto](./public/listarumproduto.png)
 
-**[Validar se consigo não consigo listar um produto que não existe]**
+**[Será validado que não é possível listar um produto que não existe]**
 
-Se a lista retornar com falha, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a lista retornar com falha, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Produto não existe](./public/produtonaoexiste.png)
 
@@ -270,37 +281,37 @@ Se a lista retornar com falha, o resultado mostrado deverá ser esse abaixo e co
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se não consigo atualizar um produto com o nome menor que 5 caracteres]**
+**[Será validado que não é possível atualizar um produto com o nome menor que 5 caracteres]**
 
-Se o produto tiver o nome menor que cinco caracteres, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver o nome menor que cinco caracteres, o resultado retornado deverá ser conforme exibido abaixo, com status `422`:
 
 ![Atualizar com nome menor que cinco](./public/atualizarcomnomemenorque5.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se não consigo atualizar um produto com quantidade menor que zero]**
+**[Será validado que não é possível atualizar um produto com quantidade menor que zero]**
 
-Se o produto tiver o quantidade menor que zero, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver o quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar menor que zero](./public/atualizarmenorque0.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se não consigo atualizar um produto com quantidade igual a zero]**
+**[Será validado que não é possível atualizar um produto com quantidade igual a zero]**
 
-Se o produto tiver o quantidade igual a zero, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver o quantidade igual a zero, o resultado mostrado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar igual a zero](./public/atualizarigual0.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se não consigo atualizar um produto com uma string no campo quantidade]**
+**[Será validado que não é possível atualizar um produto com uma string no campo quantidade]**
 
-Se o produto tiver o quantidade como string, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se o produto tiver o quantidade como string, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar com string](./public/atualizarcomostring.png)
-(Importante saber que essas duas \ \ que são retornadas é gerado pela validacão do JOI apenas para dizer que existe uma aspas dentro da outra.
+(As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Validar se consigo atualizar um produto com sucesso]**
+**[Será validado que é possível atualizar um produto com sucesso]**
 
-Se o produto atualizado com sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se o produto atualizado com sucesso, o resultado mostrretornadoado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Atualizado com sucesso](./public/atualizarcomsucesso.png)
 
@@ -312,15 +323,15 @@ Se o produto atualizado com sucesso, o resultado mostrado deverá ser esse abaix
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se consigo deletar um produto com sucesso]**
+**[Será validado que não é possível deletar um produto com sucesso]**
 
-Se o produto deletado com sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se o produto deletado com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Deletar um produto](./public/deletarumproduto.png)
 
-**[Validar se não é possível deletar um produto que não existe]**
+**[Será validado que não é possível deletar um produto que não existe]**
 
-Se o produto não for deletado com sucesso, o resultado mostrado deverá ser esse e com status 422:
+Se o produto não for deletado com sucesso, o resultado retornado deverá ser esse e com status http `422`:
 
 ![Deletar um produto que não existe](./public/deletarumprodutoquenaoexiste.png)
 
@@ -368,33 +379,33 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se não é possível cadastrar vendas com quantidade menor que zero]**
+**[Será validado que não é possível cadastrar vendas com quantidade menor que zero]**
 
-Se a venda tiver uma quantidade menor que zero, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a venda tiver uma quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Vendas menor que zero](./public/comprasmenorquezero.png)
 
-**[Validar se não é possível cadastrar vendas com quantidade igual a zero]**
+**[Será validado que não é possível cadastrar vendas com quantidade igual a zero]**
 
-Se a venda tiver uma quantidade igual a zero, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a venda tiver uma quantidade igual a zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Vendas igual a zero](./public/comprasigualazero.png)
 
-**[Validar se não é possível cadastrar vendas com uma string no campo quantidade]**
+**[Será validado que não é possível cadastrar vendas com uma string no campo quantidade]**
 
-Se a venda tiver uma quantidade com valor, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a venda tiver uma quantidade com valor, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Vendas com string](./public/comprascomstring.png)
 
-**[Validar se é possível criar uma venda com sucesso]**
+**[Será validado que é possível criar uma venda com sucesso]**
 
-Se a venda foi feita com sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se a venda foi feita com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Cadastro de venda com sucesso](./public/cadastrodevendacomsucesso.png)
 
-**[Validar se é possível criar várias vendas com sucesso]**
+**[Será validado que é possível criar várias vendas com sucesso]**
 
-Se as vendas foi feita com sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se as vendas foi feita com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Cadastrar varias compras](./public/variascompras.png)
 
@@ -408,15 +419,15 @@ Se as vendas foi feita com sucesso, o resultado mostrado deverá ser esse abaixo
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se todas as vendas estão sendo retornadas]**
+**[Será validado que todas as vendas estão sendo retornadas]**
 
-Se todas vendas estão sendo listadas, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se todas vendas estão sendo listadas, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Listar todas as vendas](./public/todasvendas.png)
 
-**[Validar se consigo listar uma determinada vendas]**
+**[Será validado que é possível listar uma determinada vendas]**
 
-Se a venda esta sendo listada, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se a venda esta sendo listada, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Listar uma venda](./public/listaumavenda.png)
 
@@ -442,27 +453,27 @@ Se a venda esta sendo listada, o resultado mostrado deverá ser esse abaixo e co
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se não consigo atualizar vendas com quantidade menor que zero]**
+**[Será validado que não é possível atualizar vendas com quantidade menor que zero]**
 
-Se a venda tiver uma quantidade menor que zero, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a venda tiver uma quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar venda menor que zero](./public/atualizarvendamenorquezero.png)
 
-**[Validar se não consigo atualizar vendas com quantidade igual a zero]**
+**[Será validado que não é possível atualizar vendas com quantidade igual a zero]**
 
-Se a venda tiver uma quantidade igual a zero, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a venda tiver uma quantidade igual a zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar venda igual zero](./public/atualizarvendaigualzero.png)
 
-**[Validar se não consigo atualizar vendas com uma string no campo quantidade]**
+**[Será validado que não é possível atualizar vendas com uma string no campo quantidade]**
 
-Se a venda tiver uma quantidade do tipo string, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a venda tiver uma quantidade do tipo string, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar venda com string](./public/atualizarvendacomstring.png)
 
-**[Validar se consigo atualizar uma vendas com sucesso]**
+**[Será validado que é possível atualizar uma vendas com sucesso]**
 
-Se a venda for atualizada com sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se a venda for atualizada com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Atualizar uma venda com sucesso](./public/atualizarumavendacomsucesso.png)
 
@@ -474,15 +485,15 @@ Se a venda for atualizada com sucesso, o resultado mostrado deverá ser esse aba
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar se consigo deletar uma venda com sucesso]**
+**[Será validado que é possível deletar uma venda com sucesso]**
 
-Se a venda foi deletada sucesso, o resultado mostrado deverá ser esse abaixo e com status 200:
+Se a venda foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Deletar uma venda com sucesso](./public/deletarumavendacomsucesso.png)
 
-**[Validar se não consigo deletar uma venda que não existe]**
+**[Será validado que não é possível deletar uma venda que não existe]**
 
-Se a venda não foi deletada sucesso, o resultado mostrado deverá ser esse abaixo e com status 422:
+Se a venda não foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Deletar uma venda que não existe](./public/deletarumavendaquenaoexiste.png)
 
@@ -496,11 +507,11 @@ Se a venda não foi deletada sucesso, o resultado mostrado deverá ser esse abai
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar que a quantidade do produto atualize ao fazer uma compra]**
+**[Será validado que é possível a quantidade do produto atualize ao fazer uma compra]**
 
 Ao fazer uma determinada venda, a quantidade do produto deverá ser atualizada.
 
-**[Validar que a quantidade do produto atualize ao deletar uma compra]**
+**[Será validado que é possível a quantidade do produto atualize ao deletar uma compra]**
 
 Ao fazer deletar uma determinada venda, a quantidade do produto deverá ser atualizada para a quantidade que tinha antes de ter feito essa venda.
 
@@ -512,9 +523,9 @@ Ao fazer deletar uma determinada venda, a quantidade do produto deverá ser atua
 
 ### Além disso,as seguintes verificações serão feitas:
 
-**[Validar que o estoque do produto nunca fique com a quantidade menor que zero]**
+**[Será validado que o estoque do produto nunca fique com a quantidade menor que zero]**
 
-Um produto não poderá ficar com a quantidade menor que zero,  o resultado mostrado deverá ser esse abaixo e com status 404:
+Um produto não poderá ficar com a quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `404`:
 
 ![Compra maior que a quantidade](./public/compramaiorqueaquantidade.png)
 

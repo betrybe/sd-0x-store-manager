@@ -22,8 +22,8 @@ describe('9 - Atualize a quantidade de produtos', () => {
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
     const products = [{ name: 'Martelo de Thor', quantity: 10 },
-      { name: 'Trage de encolhimento', quantity: 20 },
-      { name: 'Escudo do capitão américa', quantity: 30 }];
+      { name: 'Traje de encolhimento', quantity: 20 },
+      { name: 'Escudo do Capitão América', quantity: 30 }];
     await db.collection('products').insertMany(products);
   });
 
@@ -36,8 +36,9 @@ describe('9 - Atualize a quantidade de produtos', () => {
     await connection.close();
   });
 
-  it('Validar que a quantidade do produto atualize ao fazer uma compra', async () => {
+  it('Será validado que é possível a quantidade do produto atualize ao fazer uma compra', async () => {
     let result;
+    let responseProductId;
 
     await frisby
       .get(`${url}/products/`)
@@ -45,28 +46,33 @@ describe('9 - Atualize a quantidade de produtos', () => {
       .then((response) => {
         const { body } = response;
         result = JSON.parse(body);
-        return frisby.post(`${url}/sales/`,
-          [
-            {
-              productId: result.products[0]._id,
-              quantity: 2,
-            },
-          ])
-          .expect('status', 200);
+        responseProductId = result.products[0]._id;
       });
 
-    await frisby.get(`${url}/products/${result.products[0]._id}`)
+    await frisby.post(`${url}/sales/`,
+      [
+        {
+          productId: responseProductId,
+          quantity: 2,
+        },
+      ])
+      .expect('status', 200);
+
+    await frisby.get(`${url}/products/${responseProductId}`)
       .expect('status', 201)
       .expect((responseProducts) => {
         const { body } = responseProducts;
         const resultProducts = JSON.parse(body);
-        expect(resultProducts.quantity).toBe(8);
+        const quantityProducts = resultProducts.quantity;
+        expect(quantityProducts).toBe(8);
       });
-  }, 30000);
+  });
 
-  it('Validar que a quantidade do produto atualize ao deletar uma compra', async () => {
+  it('Será validado que é possível a quantidade do produto atualize ao deletar uma compra', async () => {
     let result;
     let resultSales;
+    let responseProductId;
+    let responseSalesId;
 
     await frisby
       .get(`${url}/products/`)
@@ -74,30 +80,34 @@ describe('9 - Atualize a quantidade de produtos', () => {
       .then((response) => {
         const { body } = response;
         result = JSON.parse(body);
-        return frisby.post(`${url}/sales/`,
-          [
-            {
-              productId: result.products[0]._id,
-              quantity: 2,
-            },
-          ])
-          .expect('status', 200)
-          .then((responseSales) => {
-            const { body } = responseSales;
-            resultSales = JSON.parse(body);
-          });
+        responseProductId = result.products[0]._id;
       });
 
-    await frisby.delete(`${url}/sales/${resultSales._id}`).expect('status', 200);
+    await frisby.post(`${url}/sales/`,
+      [
+        {
+          productId: responseProductId,
+          quantity: 2,
+        },
+      ])
+      .expect('status', 200)
+      .then((responseSales) => {
+        const { body } = responseSales;
+        resultSales = JSON.parse(body);
+        responseSalesId = resultSales._id;
+      });
 
-    await frisby.get(`${url}/products/${result.products[0]._id}`)
+    await frisby.delete(`${url}/sales/${responseSalesId}`).expect('status', 200);
+
+    await frisby.get(`${url}/products/${responseProductId}`)
       .expect('status', 201)
       .expect((responseProducts) => {
         const { body } = responseProducts;
         const resultProducts = JSON.parse(body);
-        expect(resultProducts.quantity).toBe(10);
+        const quantityProducts = resultProducts.quantity;
+        expect(quantityProducts).toBe(10);
       });
-  }, 30000);
+  });
 });
 
 describe('10 - Valide a quantidade de produtos', () => {
@@ -118,8 +128,8 @@ describe('10 - Valide a quantidade de produtos', () => {
     await db.collection('products').deleteMany({});
     await db.collection('sales').deleteMany({});
     const products = [{ name: 'Martelo de Thor', quantity: 10 },
-      { name: 'Trage de encolhimento', quantity: 20 },
-      { name: 'Escudo do capitão américa', quantity: 30 }];
+      { name: 'Traje de encolhimento', quantity: 20 },
+      { name: 'Escudo do Capitão América', quantity: 30 }];
     await db.collection('products').insertMany(products);
   });
 
@@ -132,8 +142,9 @@ describe('10 - Valide a quantidade de produtos', () => {
     await connection.close();
   });
 
-  it('Validar que o estoque do produto nunca fique com a quantidade menor que zero', async () => {
+  it('Será validado que o estoque do produto nunca fique com a quantidade menor que zero', async () => {
     let result;
+    let responseProductId;
 
     await frisby
       .get(`${url}/products/`)
@@ -141,19 +152,21 @@ describe('10 - Valide a quantidade de produtos', () => {
       .then((response) => {
         const { body } = response;
         result = JSON.parse(body);
-        return frisby.post(`${url}/sales/`,
-          [
-            {
-              productId: result.products[0]._id,
-              quantity: 100,
-            },
-          ])
-          .expect('status', 404)
-          .then((responseSales) => {
-            const { json } = responseSales;
-            expect(json.err.code).toBe('stock_problem');
-            expect(json.err.message).toBe('Such amount is not permitted to sell');
-          });
+        responseProductId = result.products[0]._id;
       });
-  }, 30000);
+
+    await frisby.post(`${url}/sales/`,
+      [
+        {
+          productId: responseProductId,
+          quantity: 100,
+        },
+      ])
+      .expect('status', 404)
+      .then((responseSales) => {
+        const { json } = responseSales;
+        expect(json.err.code).toBe('stock_problem');
+        expect(json.err.message).toBe('Such amount is not permitted to sell');
+      });
+  });
 });
