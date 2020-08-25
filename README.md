@@ -125,7 +125,7 @@ A conexão do banco devera conter os seguintes parâmetros:
 
 ```javascript
 const MONGO_DB_URL = 'mongodb://localhost:27017';
-const DB_NAME = 'StorageManager';
+const DB_NAME = 'StoreManager';
 ```
  ###  Tabelas
 O banco terá duas tabelas: produtos e vendas 
