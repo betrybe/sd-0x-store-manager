@@ -138,7 +138,7 @@ Os campos da tabela `products` terão esse formato:
 { "name" : "Produto Silva", "quantity" : 10 }
 ```
 
-A resposta que do insert deve retornar após a criação é essa:
+A resposta do insert deve retornar após a criação é essa:
 
 ```json
 { "_id" : ObjectId("5f43cbf4c45ff5104986e81d"), "name" : "Produto Silva", "quantity" : 10 }
@@ -153,7 +153,7 @@ Os campos da tabela `sales` terão esse formato:
 { "itensSold" : [ { "productId" : "5f43cbf4c45ff5104986e81d", "quantity" : 2 } ] }
 ```
 
-A resposta que do insert deve retornar após a criação é essa:
+A resposta do insert deve retornar após a criação é essa:
 ```json
 { "_id" : ObjectId("5f43cc53c45ff5104986e81e"), "itensSold" : [ { "productId" : "5f43cbf4c45ff5104986e81d", "quantity" : 2 } ] }
 ```
