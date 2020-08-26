@@ -1,5 +1,5 @@
 {
-  "name": "pedro-tofani-store-manager",
+  "name": "sd-0x-store-manager",
   "version": "1.0.0",
   "description": "Simple CRUD to sales and products",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/tryber/sd-02-project-store-manager.git"
   },
-  "author": "Pedro Tofani - phtf92@gmail.com",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tryber/sd-02-project-store-manager/issues"
