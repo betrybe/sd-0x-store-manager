@@ -24,7 +24,7 @@ jobs:
         if: steps.wait-for-build.outputs.conclusion == 'success'
       - name: Evaluator step
         id: evaluator
-        uses: betrybe/jest-evaluator-action@configura-npm-start
+        uses: betrybe/jest-evaluator-action@v6
         if: steps.wait-for-build.outputs.conclusion == 'success'
         with:
           repository-test-name: 'betrybe/sd-0x-store-manager-tests'

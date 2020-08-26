@@ -119,14 +119,33 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 - Retorne os códigos de status corretos (recurso criado, erro de validação, autorização, etc).
 
-### Conexão com o Banco:
+## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
 
-A conexão do banco devera conter os seguintes parâmetros:
+Há um arquivo `index.js` no repositório. Não remova, nele, o seguinte trecho de código:
 
 ```javascript
-const MONGO_DB_URL = 'mongodb://localhost:27017';
+app.get('/', (request, response) => {
+  response.send();
+});
+```
+Isso está configurado para o avaliador funcionar.
+
+### Conexão com o Banco:
+
+A conexão do banco local devera conter os seguintes parâmetros:
+
+```javascript
+const MONGO_DB_URL = 'mongodb://localhost:27017/StoreManager';
 const DB_NAME = 'StoreManager';
 ```
+
+Para o avaliador funcionar altere a conexão do banco para:
+
+```javascript
+const MONGO_DB_URL = 'mongodb://mongodb:27017/StoreManager';
+const DB_NAME = 'StoreManager';
+```
+
  ###  Tabelas
 O banco terá duas tabelas: produtos e vendas 
 
