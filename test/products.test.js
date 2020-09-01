@@ -219,7 +219,7 @@ describe('2 - Crie um endpoint para listar os produtos', () => {
       });
 
     await frisby.get(`${url}/products/${responseProductId}`)
-      .expect('status', 201)
+      .expect('status', 200)
       .then((secondResponse) => {
         const { json } = secondResponse;
         const productName = json.name;

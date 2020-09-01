@@ -59,7 +59,7 @@ describe('9 - Atualize a quantidade de produtos', () => {
       .expect('status', 200);
 
     await frisby.get(`${url}/products/${responseProductId}`)
-      .expect('status', 201)
+      .expect('status', 200)
       .expect((responseProducts) => {
         const { body } = responseProducts;
         const resultProducts = JSON.parse(body);
@@ -100,7 +100,7 @@ describe('9 - Atualize a quantidade de produtos', () => {
     await frisby.delete(`${url}/sales/${responseSalesId}`).expect('status', 200);
 
     await frisby.get(`${url}/products/${responseProductId}`)
-      .expect('status', 201)
+      .expect('status', 200)
       .expect((responseProducts) => {
         const { body } = responseProducts;
         const resultProducts = JSON.parse(body);
