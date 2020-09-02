@@ -5,7 +5,7 @@ on:
 jobs:
   evaluator_job:
     name: Evaluator Job
-    runs-on: self-hosted
+    runs-on: ubuntu-18.04
     services:
       mongodb:
         image: mongo
