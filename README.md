@@ -495,7 +495,7 @@ Se a venda tiver uma quantidade do tipo string, o resultado retornado deverá se
 
 Se a venda for atualizada com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
-![Atualizar uma venda com sucesso](./public/atualizarumavendacomsucesso.png)
+![Atualizar uma venda com sucesso](./public/atualizarvendacomsucesso.png)
 
 ### 8 - Crie um endpoint para deletar uma venda
 
