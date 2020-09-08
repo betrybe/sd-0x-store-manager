@@ -283,7 +283,7 @@ Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exib
 
 Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
-![Listar um produto](./public/listarumproduto.png)
+![Listar um produto](./public/produtoespecifico.png)
 
 **[Será validado que não é possível listar um produto que não existe]**
 
