@@ -474,6 +474,12 @@ Se a venda esta sendo listada, o resultado retornado deverá ser conforme exibid
 
 ![Listar uma venda](./public/listaumavenda.png)
 
+**[Será validado que não é possível listar uma venda inexistente]**
+
+Se a venda não está sendo listada, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+
+![Listar uma venda](./public/vendanaoexistente.png)
+
 ### 7 - Crie um endpoint para atualizar uma venda
 
 - O endpoint deve ser acessível através do caminho (`/sales/:id`);
