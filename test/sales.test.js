@@ -326,12 +326,12 @@ describe('6 - Crie um endpoint para listar as vendas', () => {
 
   it('Será validado que não é possível listar uma venda inexistente', async () => {
     await frisby.get(`${url}/sales/9999`)
-      .expect('status', 422)
+      .expect('status', 404)
       .then((responseOne) => {
         const { body } = responseOne;
         const responseError = JSON.parse(body);
-        expect(responseError.err.code).toEqual('invalid_data');
-        expect(responseError.err.message).toEqual('Wrong ID format');
+        expect(responseError.err.code).toEqual('not_found');
+        expect(responseError.err.message).toEqual('Sale not found');
       });
   });
 });
