@@ -11,45 +11,51 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 ### ANTES DE COMEÇAR A DESENVOLVER:
 
 1. Clone o repositório
-  * `git clone https://github.com:tryber/sd-0x-store-manager.git`.
-  * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-0x-store-manager`
+
+- `git clone https://github.com:tryber/sd-0x-store-manager.git`.
+- Entre na pasta do repositório que você acabou de clonar:
+  - `cd sd-0x-store-manager`
 
 2. Instale as dependências [**Caso existam**]
-  * `npm install`
+
+- `npm install`
 
 3. Crie uma branch a partir da branch `master`
-  * Verifique que você está na branch `master`
-    * Exemplo: `git branch`
-  * Se não estiver, mude para a branch `master`
-    * Exemplo: `git checkout master`
-  * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
-    * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-sd-0x-store-manager`
+
+- Verifique que você está na branch `master`
+  - Exemplo: `git branch`
+- Se não estiver, mude para a branch `master`
+  - Exemplo: `git checkout master`
+- Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
+  - Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
+  - Exemplo: `git checkout -b joaozinho-sd-0x-store-manager`
 
 4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-  * Verifique que as mudanças ainda não estão no _stage_
-    * Exemplo: `git status` (deve aparecer listada a pasta _joaozinho_ em vermelho)
-  * Adicione o novo arquivo ao _stage_ do Git
-      * Exemplo:
-        * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-        * `git status` (deve aparecer listado o arquivo _joaozinho/README.md_ em verde)
-  * Faça o `commit` inicial
-      * Exemplo:
-        * `git commit -m 'iniciando o projeto x'` (fazendo o primeiro commit)
-        * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
+
+- Verifique que as mudanças ainda não estão no _stage_
+  - Exemplo: `git status` (deve aparecer listada a pasta _joaozinho_ em vermelho)
+- Adicione o novo arquivo ao _stage_ do Git
+  - Exemplo:
+    - `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
+    - `git status` (deve aparecer listado o arquivo _joaozinho/README.md_ em verde)
+- Faça o `commit` inicial
+  - Exemplo:
+    - `git commit -m 'iniciando o projeto x'` (fazendo o primeiro commit)
+    - `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-0x-store-manager`
+
+- Usando o exemplo anterior: `git push -u origin joaozinho-sd-0x-store-manager`
 
 6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-store-manager/pulls)
-  * Clique no botão verde _"New pull request"_
-  * Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
-  * Clique no botão verde _"Create pull request"_
-  * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-  * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-store-manager/pulls) e confira que o seu _Pull Request_ está criado
+
+- Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-store-manager/pulls)
+- Clique no botão verde _"New pull request"_
+- Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
+- Clique no botão verde _"Create pull request"_
+- Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
+- **Não se preocupe em preencher mais nada por enquanto!**
+- Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-store-manager/pulls) e confira que o seu _Pull Request_ está criado
 
 ---
 
@@ -69,6 +75,18 @@ A API a ser construída trata-se de um sistema de gerenciamento de vendas, onde 
 
 ---
 
+# Análise Estática
+
+Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu código.
+
+Este projeto já vem com as dependências relacionadas ao _linter_ configuradas no arquivos `package.json`.
+
+Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
+
+Você pode também instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+---
+
 ## Desenvolvimento
 
 Você vai desenvolver todas as camadas da API (Models, Service caso necessário, e Controllers).
@@ -82,6 +100,7 @@ Você deve utilizar o banco MongoDB para a gestão de dados. Além disso, a API 
 - Deve ser possível que o usuário, independente de cadastramento ou login, possa adicionar, ler, deletar e atualizar produtos no seu estoque. O usuário deve poder também enviar vendas para o sistema. Essas vendas devem validar se o produto em questão existe. Deve, também, ser possível ler, deletar e atualizar vendas.
 
 - Para **todos os endpoints** garanta que:
+
   - Caso o recurso não seja encontrado, sua API retorne o status HTTP adequado com o body `{ message: '<recurso> não encontrado' }`
   - Em caso de erro, sua API retorne o status HTTP adequado com o body `{ error: { message: <mensagem de erro>, code: <código do erro> } }`
     - O código do erro deve ser determinado por você e deve seguir o mesmo padrão para toda a aplicação. Por exemplo: `'not_found'`, `'invalid_data'` e afins
@@ -107,7 +126,7 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 ## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
 
-###  Todos os seus endpoints devem estar no padrão REST
+### Todos os seus endpoints devem estar no padrão REST
 
 - Use os verbos HTTP adequados para cada operação.
 
@@ -126,6 +145,7 @@ app.get('/', (request, response) => {
   response.send();
 });
 ```
+
 Isso está configurado para o avaliador funcionar.
 
 ### Conexão com o Banco:
@@ -144,37 +164,44 @@ const MONGO_DB_URL = 'mongodb://mongodb:27017/StoreManager';
 const DB_NAME = 'StoreManager';
 ```
 
- ###  Tabelas
-O banco terá duas tabelas: produtos e vendas 
+### Tabelas
+
+O banco terá duas tabelas: produtos e vendas
 
 A tabela de produtos deverá ter o seguinte nome: `products`
 
 Os campos da tabela `products` terão esse formato:
 
 ```json
-{ "name" : "Produto Silva", "quantity" : 10 }
+{ "name": "Produto Silva", "quantity": 10 }
 ```
 
 A resposta do insert deve retornar após a criação é essa:
 
 ```json
-{ "_id" : ObjectId("5f43cbf4c45ff5104986e81d"), "name" : "Produto Silva", "quantity" : 10 }
+{ "_id": ObjectId("5f43cbf4c45ff5104986e81d"), "name": "Produto Silva", "quantity": 10 }
 ```
-(O _id será gerado automaticamente)
+
+(O \_id será gerado automaticamente)
 
 A tabela de vendas deverá ter o seguinte nome: `sales`
 
 Os campos da tabela `sales` terão esse formato:
 
 ```json
-{ "itensSold" : [ { "productId" : "5f43cbf4c45ff5104986e81d", "quantity" : 2 } ] }
+{ "itensSold": [{ "productId": "5f43cbf4c45ff5104986e81d", "quantity": 2 }] }
 ```
 
 A resposta do insert deve retornar após a criação é essa:
+
 ```json
-{ "_id" : ObjectId("5f43cc53c45ff5104986e81e"), "itensSold" : [ { "productId" : "5f43cbf4c45ff5104986e81d", "quantity" : 2 } ] }
+{
+  "_id": ObjectId("5f43cc53c45ff5104986e81e"),
+  "itensSold": [{ "productId": "5f43cbf4c45ff5104986e81d", "quantity": 2 }]
+}
 ```
-(O _id será gerado automaticamente)
+
+(O \_id será gerado automaticamente)
 
 ### 1 - Crie um endpoint para o cadastro de produtos
 
@@ -187,7 +214,7 @@ A resposta do insert deve retornar após a criação é essa:
 ```json
 {
   "name": "product_name",
-  "quantity": "product_quantity",
+  "quantity": "product_quantity"
 }
 ```
 
@@ -217,13 +244,11 @@ O projeto deve rodar na porta `http://localhost/3000`
 
 - A resposta do endpoint em caso de sucesso deve ser o produto criado.
 
-
 ### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que não é possível criar um produto com o nome menor que 5 caracteres]**
 
 Se o produto tiver o nome menor que cinco caracteres o resultado retornado deverá ser conforme exibido abaixo, com um status http `422`:
-
 
 ![Nome menor que 5](./public/nomeMenorQue5.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
@@ -449,7 +474,6 @@ Se a venda esta sendo listada, o resultado retornado deverá ser conforme exibid
 
 ![Listar uma venda](./public/listaumavenda.png)
 
-
 ### 7 - Crie um endpoint para atualizar uma venda
 
 - O endpoint deve ser acessível através do caminho (`/sales/:id`);
@@ -457,12 +481,12 @@ Se a venda esta sendo listada, o resultado retornado deverá ser conforme exibid
 - O corpo da requisição deve receber a seguinte estrutura:
 
 ```json
-	[
-	  {
-	    "productId": "5f3ff849d94d4a17da707008",
-      "quantity": 3
-	  }
-	]
+[
+  {
+    "productId": "5f3ff849d94d4a17da707008",
+    "quantity": 3
+  }
+]
 ```
 
 - `quantity` deve ser um número inteiro maior que 0;
@@ -551,11 +575,11 @@ Um produto não poderá ficar com a quantidade menor que zero, o resultado retor
 
 ### DURANTE O DESENVOLVIMENTO
 
-* Faça `commits` das alterações que você fizer no código regularmente
+- Faça `commits` das alterações que você fizer no código regularmente
 
-* Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
+- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
 
-* Os comandos que você utilizará com mais frequência são:
+- Os comandos que você utilizará com mais frequência são:
   1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
   2. `git add` _(para adicionar arquivos ao stage do Git)_
   3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
@@ -568,13 +592,13 @@ Um produto não poderá ficar com a quantidade menor que zero, o resultado retor
 
 Para sinalizar que o seu projeto está pronto para o _"Code Review"_ dos seus colegas, faça o seguinte:
 
-* Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
+- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
 
-  * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
+  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
 
-  * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
+  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
 
-  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
+  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
 
 Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
