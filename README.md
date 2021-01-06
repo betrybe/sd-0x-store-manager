@@ -39,7 +39,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [7 - Crie um endpoint para atualizar uma venda](#7-crie-um-endpoint-para-atualizar-uma-venda)
     - [8 - Crie um endpoint para deletar uma venda](#8-crie-um-endpoint-para-deletar-uma-venda)
 
-    `Bonus`
+    `Bônus`
     - [9 - Atualize a quantidade de produtos](#9-atualize-a-quantidade-de-produtos)
     - [10 - Valide a quantidade de produtos](#10-valide-a-quantidade-de-produtos)
 - [Avisos Finais](#avisos-finais)
