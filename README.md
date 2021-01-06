@@ -165,7 +165,7 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 ## Durante o desenvolvimento
 
-- Faça `commits` das alterações que você fizer no código regularmente
+- Faça `commits` das alterações que você fizer no código regularmente.
 
 - Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
 
