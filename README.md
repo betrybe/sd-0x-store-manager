@@ -23,11 +23,12 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
 - [Como desenvolver](#como-desenvolver)
   - [Padrões e conexões](#padrões-e-conexões)
-  - [Conexão com o Banco](#conexão-com-o-banco)
+  - [Conexão com o BD](#conexão-com-o-bd)
   - [Tabelas](#tabelas)
 - [Requisitos do projeto](#requisitos-do-projeto)
   - [Linter](#linter)
   - [Lista de requisitos](#lista-de-requisitos)
+ 
     `Obrigatórios` 
     - [1 - Crie um endpoint para o cadastro de produtos](#1-crie-um-endpoint-para-o-cadastro-de-produtos)
     - [2 - Crie um endpoint para listar os produtos](#2-crie-um-endpoint-para-listar-os-produtos)
@@ -38,7 +39,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [7 - Crie um endpoint para atualizar uma venda](#7-crie-um-endpoint-para-atualizar-uma-venda)
     - [8 - Crie um endpoint para deletar uma venda](#8-crie-um-endpoint-para-deletar-uma-venda)
 
-    `Bonus`
+    `Bônus`
     - [9 - Atualize a quantidade de produtos](#9-atualize-a-quantidade-de-produtos)
     - [10 - Valide a quantidade de produtos](#10-valide-a-quantidade-de-produtos)
 - [Avisos Finais](#avisos-finais)
@@ -88,14 +89,14 @@ Você deve utilizar o banco MongoDB para a gestão de dados. Além disso, a API 
 
 - Para **todos os endpoints** garanta que:
 
-  - Caso o recurso não seja encontrado, sua API retorne o status HTTP adequado com o body `{ message: '<recurso> não encontrado' }`
-  - Em caso de erro, sua API retorne o status HTTP adequado com o body `{ error: { message: <mensagem de erro>, code: <código do erro> } }`
-    - O código do erro deve ser determinado por você e deve seguir o mesmo padrão para toda a aplicação. Por exemplo: `'not_found'`, `'invalid_data'` e afins
+  - Caso o recurso não seja encontrado, sua API retorne o status HTTP adequado com o body `{ message: '<recurso> não encontrado' }`.
+  - Em caso de erro, sua API retorne o status HTTP adequado com o body `{ error: { message: <mensagem de erro>, code: <código do erro> } }`.
+    - O código do erro deve ser determinado por você e deve seguir o mesmo padrão para toda a aplicação. Por exemplo: `'not_found'`, `'invalid_data'` e afins.
   - Em caso de dados inválidos, sua API retorne o status HTTP adequado, com o body `{ error: { message: 'Dados inválidos', code: <código do erro> } }`.
   - Todos os retornos de erro devem seguir o mesmo formato. Para erros que requerem dados adicionais (por exemplo, para informar quais campos estão incorretos) utilize a propriedade `data` dentro do objeto `error`.
   - Para gerar os objetos de erro personalizados, você pode utilizar uma biblioteca de erros, como o [`boom`](https://www.npmjs.com/package/@hapi/boom).
 
-- Você pode utilizar middlewares e objetos de erro personalizados para que não tenha que repetir a lógica de tratamento de erro em vários lugares. Não se esqueça também do [express-rescue](https://www.npmjs.com/package/express-rescue), ele pode facilitar muito o trabalho de tratar erros
+- Você pode utilizar middlewares e objetos de erro personalizados para que não tenha que repetir a lógica de tratamento de erro em vários lugares. Não se esqueça também do [express-rescue](https://www.npmjs.com/package/express-rescue), ele pode facilitar muito o trabalho de tratar erros.
 
 - Quando estiver na dúvida sobre qual status HTTP utilizar, você pode consultar sites como o [httpstatuses.com](https://httpstatuses.com/), [restapitutorial.com](https://www.restapitutorial.com/httpstatuscodes.html) ou a [documentação sobre o assunto no MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status). Com o tempo, você vai lembrar com facilidade o significado dos códigos mais comuns.
 
@@ -164,9 +165,9 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 ## Durante o desenvolvimento
 
-- Faça `commits` das alterações que você fizer no código regularmente
+- Faça `commits` das alterações que você fizer no código regularmente.
 
-- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
+- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto.
 
 - Os comandos que você utilizará com mais frequência são:
   1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
@@ -227,7 +228,7 @@ app.get('/', (request, response) => {
 
 Isso está configurado para o avaliador funcionar.
 
-### Conexão com o Banco:
+### Conexão com o BD:
 
 A conexão do banco local devera conter os seguintes parâmetros:
 
