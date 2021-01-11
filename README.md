@@ -31,18 +31,18 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [1 - Crie um endpoint para o cadastro de produtos](#1-crie-um-endpoint-para-o-cadastro-de-produtos)
  
     `Obrigatórios`
-    - [1 - Crie um endpoint para o cadastro de produtos](#1-crie-um-endpoint-para-o-cadastro-de-produtos)
-    - [2 - Crie um endpoint para listar os produtos](#2-crie-um-endpoint-para-listar-os-produtos)
-    - [3 - Crie um endpoint para atualizar um produto](#3-crie-um-endpoint-para-atualizar-um-produto)
-    - [4 - Crie um endpoint para deletar um produto](#4-crie-um-endpoint-para-deletar-um-produto)
-    - [5 - Crie um endpoint para cadastrar vendas](#5-crie-um-endpoint-para-cadastrar-vendas)
-    - [6 - Crie um endpoint para listar as vendas](#6-crie-um-endpoint-para-listar-as-vendas)
-    - [7 - Crie um endpoint para atualizar uma venda](#7-crie-um-endpoint-para-atualizar-uma-venda)
-    - [8 - Crie um endpoint para deletar uma venda](#8-crie-um-endpoint-para-deletar-uma-venda)
+    - [1 - Crie um endpoint para o cadastro de produtos](#1---crie-um-endpoint-para-o-cadastro-de-produtos)
+    - [2 - Crie um endpoint para listar os produtos](#2---crie-um-endpoint-para-listar-os-produtos)
+    - [3 - Crie um endpoint para atualizar um produto](#3---crie-um-endpoint-para-atualizar-um-produto)
+    - [4 - Crie um endpoint para deletar um produto](#4---crie-um-endpoint-para-deletar-um-produto)
+    - [5 - Crie um endpoint para cadastrar vendas](#5---crie-um-endpoint-para-cadastrar-vendas)
+    - [6 - Crie um endpoint para listar as vendas](#6---crie-um-endpoint-para-listar-as-vendas)
+    - [7 - Crie um endpoint para atualizar uma venda](#7---crie-um-endpoint-para-atualizar-uma-venda)
+    - [8 - Crie um endpoint para deletar uma venda](#8---crie-um-endpoint-para-deletar-uma-venda)
 
     `Bônus`
-    - [9 - Atualize a quantidade de produtos](#9-atualize-a-quantidade-de-produtos)
-    - [10 - Valide a quantidade de produtos](#10-valide-a-quantidade-de-produtos)
+    - [9 - Atualize a quantidade de produtos](#9---atualize-a-quantidade-de-produtos)
+    - [10 - Valide a quantidade de produtos](#10---valide-a-quantidade-de-produtos)
 - [Avisos Finais](#avisos-finais)
 
 ---
