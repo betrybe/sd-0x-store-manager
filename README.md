@@ -23,7 +23,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
 - [Como desenvolver](#como-desenvolver)
   - [Padrões e conexões](#padrões-e-conexões)
-  - [Conexão com o BD](#conexão-com-o-bd)
+  - [Conexão com o Banco](#conexão-com-o-banco)
   - [Tabelas](#tabelas)
 - [Requisitos do projeto](#requisitos-do-projeto)
   - [Linter](#linter)
@@ -229,7 +229,7 @@ app.get('/', (request, response) => {
 
 Isso está configurado para o avaliador funcionar.
 
-### Conexão com o BD:
+### Conexão com o Banco:
 
 A conexão do banco local devera conter os seguintes parâmetros:
 
