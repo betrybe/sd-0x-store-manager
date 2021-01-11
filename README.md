@@ -28,8 +28,9 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Requisitos do projeto](#requisitos-do-projeto)
   - [Linter](#linter)
   - [Lista de requisitos](#lista-de-requisitos)
+- [1 - Crie um endpoint para o cadastro de produtos](#1-crie-um-endpoint-para-o-cadastro-de-produtos)
  
-    `Obrigatórios` 
+    `Obrigatórios`
     - [1 - Crie um endpoint para o cadastro de produtos](#1-crie-um-endpoint-para-o-cadastro-de-produtos)
     - [2 - Crie um endpoint para listar os produtos](#2-crie-um-endpoint-para-listar-os-produtos)
     - [3 - Crie um endpoint para atualizar um produto](#3-crie-um-endpoint-para-atualizar-um-produto)
