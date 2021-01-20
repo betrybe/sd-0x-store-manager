@@ -1,3 +1,7 @@
+### Termos e acordos
+
+Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe
+
 # Boas vindas ao repositório do projeto Store Manager!
 
 Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Fique atento a cada passo, e se tiver qualquer dúvida, nos envie por Slack! #vqv 🚀
@@ -6,9 +10,109 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
-## Instruções para entregar seu projeto:
+# Sumário
 
-### ANTES DE COMEÇAR A DESENVOLVER:
+- [Habilidades](#habilidades)
+- [Entregáveis](#entregáveis)
+  - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
+  - [Desenvolvimento](#desenvolvimento)
+  - [Data de entrega](#data-de-entrega)
+- [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
+  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
+  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
+  - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
+- [Como desenvolver](#como-desenvolver)
+  - [Padrões e conexões](#padrões-e-conexões)
+  - [Conexão com o Banco](#conexão-com-o-banco)
+  - [Tabelas](#tabelas)
+- [Requisitos do projeto](#requisitos-do-projeto)
+  - [Linter](#linter)
+  - [Lista de requisitos](#lista-de-requisitos)
+ 
+    `Obrigatórios`
+    - [1 - Crie um endpoint para o cadastro de produtos](#1---crie-um-endpoint-para-o-cadastro-de-produtos)
+    - [2 - Crie um endpoint para listar os produtos](#2---crie-um-endpoint-para-listar-os-produtos)
+    - [3 - Crie um endpoint para atualizar um produto](#3---crie-um-endpoint-para-atualizar-um-produto)
+    - [4 - Crie um endpoint para deletar um produto](#4---crie-um-endpoint-para-deletar-um-produto)
+    - [5 - Crie um endpoint para cadastrar vendas](#5---crie-um-endpoint-para-cadastrar-vendas)
+    - [6 - Crie um endpoint para listar as vendas](#6---crie-um-endpoint-para-listar-as-vendas)
+    - [7 - Crie um endpoint para atualizar uma venda](#7---crie-um-endpoint-para-atualizar-uma-venda)
+    - [8 - Crie um endpoint para deletar uma venda](#8---crie-um-endpoint-para-deletar-uma-venda)
+
+    `Bônus`
+    - [9 - Atualize a quantidade de produtos](#9---atualize-a-quantidade-de-produtos)
+    - [10 - Valide a quantidade de produtos](#10---valide-a-quantidade-de-produtos)
+- [Avisos Finais](#avisos-finais)
+
+---
+
+# Habilidadades
+
+Nesse projeto, você será capaz de:
+
+- Entender o funcionamento da camada de Model;
+- Delegar responsabilidades específicas para essa camada;
+- Conectar sua aplicação com diferentes bancos de dados;
+- Estruturar uma aplicação em camadas;
+- Delegar responsabilidades específicas para cada parte do seu app;
+- Melhorar manutenibilidade e reusabilidade do seu código;
+- Entender e aplicar os padrões REST;
+- Escrever assinaturas para APIs intuitivas e facilmente entendíveis.
+
+# Entregáveis
+
+Para entregar o seu projeto você deverá criar um Pull Request neste repositório.
+
+Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://course.betrybe.com/intro/git/) sempre que precisar!
+
+---
+
+## O que deverá ser desenvolvido
+
+Você vai desenvolver sua primeira API utilizando a arquitetura MSC!
+
+A API a ser construída trata-se de um sistema de gerenciamento de vendas, onde será possível criar, visualizar, deletar e atualizar produtos e vendas.
+
+---
+
+## Desenvolvimento
+
+Você vai desenvolver todas as camadas da API (Models, Service caso necessário, e Controllers).
+
+Através dessa aplicação, será possível realizar as operações básicas que se pode fazer em um determinado banco de dados: Criação, Leitura, Atualização e Exclusão (ou `CRUD`, pros mais íntimos 😜).
+
+Você deve utilizar o banco MongoDB para a gestão de dados. Além disso, a API deve ser RESTful.
+
+⚠️ **Dicas Importantes** ⚠️:
+
+- Deve ser possível que o usuário, independente de cadastramento ou login, possa adicionar, ler, deletar e atualizar produtos no seu estoque. O usuário deve poder também enviar vendas para o sistema. Essas vendas devem validar se o produto em questão existe. Deve, também, ser possível ler, deletar e atualizar vendas.
+
+- Para **todos os endpoints** garanta que:
+
+  - Caso o recurso não seja encontrado, sua API retorne o status HTTP adequado com o body `{ message: '<recurso> não encontrado' }`.
+  - Em caso de erro, sua API retorne o status HTTP adequado com o body `{ error: { message: <mensagem de erro>, code: <código do erro> } }`.
+    - O código do erro deve ser determinado por você e deve seguir o mesmo padrão para toda a aplicação. Por exemplo: `'not_found'`, `'invalid_data'` e afins.
+  - Em caso de dados inválidos, sua API retorne o status HTTP adequado, com o body `{ error: { message: 'Dados inválidos', code: <código do erro> } }`.
+  - Todos os retornos de erro devem seguir o mesmo formato. Para erros que requerem dados adicionais (por exemplo, para informar quais campos estão incorretos) utilize a propriedade `data` dentro do objeto `error`.
+  - Para gerar os objetos de erro personalizados, você pode utilizar uma biblioteca de erros, como o [`boom`](https://www.npmjs.com/package/@hapi/boom).
+
+- Você pode utilizar middlewares e objetos de erro personalizados para que não tenha que repetir a lógica de tratamento de erro em vários lugares. Não se esqueça também do [express-rescue](https://www.npmjs.com/package/express-rescue), ele pode facilitar muito o trabalho de tratar erros.
+
+- Quando estiver na dúvida sobre qual status HTTP utilizar, você pode consultar sites como o [httpstatuses.com](https://httpstatuses.com/), [restapitutorial.com](https://www.restapitutorial.com/httpstatuscodes.html) ou a [documentação sobre o assunto no MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status). Com o tempo, você vai lembrar com facilidade o significado dos códigos mais comuns.
+
+- Para realizar a validação dos dados, você pode utilizar middlewares como [`Joi`](https://www.npmjs.com/package/@hapi/joi) ou o [`Expresso Validator`](https://www.npmjs.com/package/@expresso/validator). Caso prefira, você também pode realizar a validação de forma manual.
+
+---
+
+## Data de Entrega
+
+O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a avaliação final.
+
+---
+
+# Instruções para entregar seu projeto
+
+## Antes de começar a desenvolver
 
 1. Clone o repositório
 
@@ -59,70 +163,46 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
-# Entregáveis
+## Durante o desenvolvimento
 
-Para entregar o seu projeto você deverá criar um Pull Request neste repositório.
+- Faça `commits` das alterações que você fizer no código regularmente.
 
-Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://course.betrybe.com/intro/git/) sempre que precisar!
+- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto.
 
----
-
-## O que deverá ser desenvolvido
-
-Você vai desenvolver sua primeira API utilizando a arquitetura MSC!
-
-A API a ser construída trata-se de um sistema de gerenciamento de vendas, onde será possível criar, visualizar, deletar e atualizar produtos e vendas.
-
----
-
-# Análise Estática
-
-Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu código.
-
-Este projeto já vem com as dependências relacionadas ao _linter_ configuradas no arquivos `package.json`.
-
-Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
-
-Você pode também instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+- Os comandos que você utilizará com mais frequência são:
+  1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
+  2. `git add` _(para adicionar arquivos ao stage do Git)_
+  3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
+  4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
+  5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
 
 ---
 
-## Desenvolvimento
+## Depois de terminar o desenvolvimento (OPCIONAL)
 
-Você vai desenvolver todas as camadas da API (Models, Service caso necessário, e Controllers).
+Para sinalizar que o seu projeto está pronto para o _"Code Review"_ dos seus colegas, faça o seguinte:
 
-Através dessa aplicação, será possível realizar as operações básicas que se pode fazer em um determinado banco de dados: Criação, Leitura, Atualização e Exclusão (ou `CRUD`, pros mais íntimos 😜).
+- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
 
-Você deve utilizar o banco MongoDB para a gestão de dados. Além disso, a API deve ser RESTful.
+  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
 
-⚠️ **Dicas Importantes** ⚠️:
+  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
 
-- Deve ser possível que o usuário, independente de cadastramento ou login, possa adicionar, ler, deletar e atualizar produtos no seu estoque. O usuário deve poder também enviar vendas para o sistema. Essas vendas devem validar se o produto em questão existe. Deve, também, ser possível ler, deletar e atualizar vendas.
+  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
 
-- Para **todos os endpoints** garanta que:
-
-  - Caso o recurso não seja encontrado, sua API retorne o status HTTP adequado com o body `{ message: '<recurso> não encontrado' }`
-  - Em caso de erro, sua API retorne o status HTTP adequado com o body `{ error: { message: <mensagem de erro>, code: <código do erro> } }`
-    - O código do erro deve ser determinado por você e deve seguir o mesmo padrão para toda a aplicação. Por exemplo: `'not_found'`, `'invalid_data'` e afins
-  - Em caso de dados inválidos, sua API retorne o status HTTP adequado, com o body `{ error: { message: 'Dados inválidos', code: <código do erro> } }`.
-  - Todos os retornos de erro devem seguir o mesmo formato. Para erros que requerem dados adicionais (por exemplo, para informar quais campos estão incorretos) utilize a propriedade `data` dentro do objeto `error`.
-  - Para gerar os objetos de erro personalizados, você pode utilizar uma biblioteca de erros, como o [`boom`](https://www.npmjs.com/package/@hapi/boom).
-
-- Você pode utilizar middlewares e objetos de erro personalizados para que não tenha que repetir a lógica de tratamento de erro em vários lugares. Não se esqueça também do [express-rescue](https://www.npmjs.com/package/express-rescue), ele pode facilitar muito o trabalho de tratar erros
-
-- Quando estiver na dúvida sobre qual status HTTP utilizar, você pode consultar sites como o [httpstatuses.com](https://httpstatuses.com/), [restapitutorial.com](https://www.restapitutorial.com/httpstatuscodes.html) ou a [documentação sobre o assunto no MDN](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status). Com o tempo, você vai lembrar com facilidade o significado dos códigos mais comuns.
-
-- Para realizar a validação dos dados, você pode utilizar middlewares como [`Joi`](https://www.npmjs.com/package/@hapi/joi) ou o [`Expresso Validator`](https://www.npmjs.com/package/@expresso/validator). Caso prefira, você também pode realizar a validação de forma manual.
+Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
 
 ---
 
-### Data de Entrega
+## Revisando um pull request
 
-O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a avaliação final.
+Use o conteúdo sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
 
----
+#VQV
 
-## Requisitos Obrigatórios:
+# Como desenvolver
+
+## Padrões e conexões
 
 ## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
 
@@ -203,6 +283,22 @@ A resposta do insert deve retornar após a criação é essa:
 
 (O \_id será gerado automaticamente)
 
+# Requisitos do projeto
+
+## Linter
+
+Usaremos o [ESLint](https://eslint.org/) para fazer a análise estática do seu código.
+
+Este projeto já vem com as dependências relacionadas ao _linter_ configuradas no arquivos `package.json`.
+
+Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
+
+Você pode também instalar o plugin do `ESLint` no `VSCode`, bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+
+---
+
+## Lista de requisitos
+
 ### 1 - Crie um endpoint para o cadastro de produtos
 
 - O endpoint deve ser acessível através do caminho (`/products`);
@@ -228,13 +324,13 @@ O retorno da API de um produto cadastrado com sucesso deverá ser:
 }
 ```
 
-### Requisição de Cadastro de Produtos:
+#### Requisição de Cadastro de Produtos:
 
 O projeto deve rodar na porta `http://localhost/3000`
 
 ![Criar produtos](./public/criarProdutos.png)
 
-## Validações importantes:
+#### Validações importantes:
 
 - `name` deve ser uma _string_ com mais de 5 caracteres e deve ser único;
 
@@ -244,7 +340,7 @@ O projeto deve rodar na porta `http://localhost/3000`
 
 - A resposta do endpoint em caso de sucesso deve ser o produto criado.
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que não é possível criar um produto com o nome menor que 5 caracteres]**
 
@@ -294,7 +390,7 @@ Se o produto for cadastrado com sucesso o resultado retornado deverá ser confor
 
 - Através do caminho `/products/:id`, apenas o produto com o `id` presente na URL deve ser retornado;
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que todos produtos estão sendo retornados]**
 
@@ -322,7 +418,7 @@ Se a lista retornar com falha, o resultado retornado deverá ser conforme exibid
 
 - Apenas o produto com o `id` presente na URL deve ser atualizado;
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que não é possível atualizar um produto com o nome menor que 5 caracteres]**
 
@@ -364,7 +460,7 @@ Se o produto atualizado com sucesso, o resultado mostrretornadoado deverá ser c
 
 - Apenas o produto com o `id` presente na URL deve ser deletado;
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que não é possível deletar um produto com sucesso]**
 
@@ -420,7 +516,7 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 
 - A resposta do endpoint em caso de sucesso deve ser a(s) venda(s) criada(s).
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que não é possível cadastrar vendas com quantidade menor que zero]**
 
@@ -460,7 +556,7 @@ Se as vendas foi feita com sucesso, o resultado retornado deverá ser conforme e
 
 - Através do caminho `/sales/:id`, apenas a venda com o `id` presente na URL deve ser retornada;
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que todas as vendas estão sendo retornadas]**
 
@@ -499,7 +595,7 @@ Se a venda não esta sendo listada, o resultado retornado deverá ser conforme e
 
 - Apenas a venda com o `id` presente na URL deve ser atualizada;
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que não é possível atualizar vendas com quantidade menor que zero]**
 
@@ -531,7 +627,7 @@ Se a venda for atualizada com sucesso, o resultado retornado deverá ser conform
 
 - Apenas a venda com o `id` presente na URL deve ser deletado;
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que é possível deletar uma venda com sucesso]**
 
@@ -553,7 +649,7 @@ Se a venda não foi deletada sucesso, o resultado retornado deverá ser conforme
 
 - Por exemplo: suponha que haja um produto chamado _Bola de Futebol_ e a sua propriedade `quantity` tenha o valor _10_. Caso seja feita uma venda com _8_ unidades desse produto, a quantidade do produto deve ser atualizada para _2_ , pois 10 - 8 = 2;
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que é possível a quantidade do produto atualize ao fazer uma compra]**
 
@@ -569,7 +665,7 @@ Ao fazer deletar uma determinada venda, a quantidade do produto deverá ser atua
 
 - Quando uma venda for realizada, garanta que a quantidade sendo vendida está disponível no estoque
 
-### Além disso,as seguintes verificações serão feitas:
+#### Além disso,as seguintes verificações serão feitas:
 
 **[Será validado que o estoque do produto nunca fique com a quantidade menor que zero]**
 
@@ -579,39 +675,10 @@ Um produto não poderá ficar com a quantidade menor que zero, o resultado retor
 
 ---
 
-### DURANTE O DESENVOLVIMENTO
+# Avisos finais
 
-- Faça `commits` das alterações que você fizer no código regularmente
+Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. Leva menos de 3 minutos!
 
-- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
+Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
 
-- Os comandos que você utilizará com mais frequência são:
-  1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
-  2. `git add` _(para adicionar arquivos ao stage do Git)_
-  3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
-  4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
-  5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
-
----
-
-### DEPOIS DE TERMINAR O DESENVOLVIMENTO (OPCIONAL)
-
-Para sinalizar que o seu projeto está pronto para o _"Code Review"_ dos seus colegas, faça o seguinte:
-
-- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
-
-  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
-
-  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
-
-  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
-
-Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
-
----
-
-### REVISANDO UM PULL REQUEST
-
-Use o conteúdo sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
-
-#VQV
+O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
