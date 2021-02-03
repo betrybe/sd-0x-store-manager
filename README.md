@@ -20,7 +20,6 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
   - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
   - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-  - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
 - [Como desenvolver](#como-desenvolver)
   - [Padrões e conexões](#padrões-e-conexões)
   - [Conexão com o Banco](#conexão-com-o-banco)
@@ -42,11 +41,13 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     `Bônus`
     - [9 - Atualize a quantidade de produtos](#9---atualize-a-quantidade-de-produtos)
     - [10 - Valide a quantidade de produtos](#10---valide-a-quantidade-de-produtos)
+- [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
+- [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
 
 ---
 
-# Habilidadades
+# Habilidades
 
 Nesse projeto, você será capaz de:
 
@@ -63,7 +64,8 @@ Nesse projeto, você será capaz de:
 
 Para entregar o seu projeto você deverá criar um Pull Request neste repositório.
 
-Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://course.betrybe.com/intro/git/) sempre que precisar!
+Lembre-se que você pode consultar nosso conteúdo sobre
+[Git & GitHub](https://course.betrybe.com/intro/git/) sempre que precisar!
 
 ---
 
@@ -106,7 +108,8 @@ Você deve utilizar o banco MongoDB para a gestão de dados. Além disso, a API 
 
 ## Data de Entrega
 
-O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a avaliação final.
+  - Serão `X` dias de projeto.
+  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
 
 ---
 
@@ -116,13 +119,15 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 1. Clone o repositório
 
-- `git clone https://github.com:tryber/sd-0x-store-manager.git`.
+- `git clone https://github.com/tryber/sd-0x-store-manager.git`.
 - Entre na pasta do repositório que você acabou de clonar:
   - `cd sd-0x-store-manager`
 
 2. Instale as dependências [**Caso existam**]
 
 - `npm install`
+
+Atenção :warning: Não rode o comando npm audit fix! Ele atualiza várias dependências do projeto, e essa atualização gera conflitos com o avaliador.
 
 3. Crie uma branch a partir da branch `master`
 
@@ -165,40 +170,20 @@ O projeto tem até a seguinte data: `DD/MM/YYYY - 14:00h`. Para ser entregue a a
 
 ## Durante o desenvolvimento
 
-- Faça `commits` das alterações que você fizer no código regularmente.
+* ⚠ **PULL REQUESTS COM ISSUES NO LINTER NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠
 
-- Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto.
+* Faça `commits` das alterações que você fizer no código regularmente
 
-- Os comandos que você utilizará com mais frequência são:
+* Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
+
+* Os comandos que você utilizará com mais frequência são:
   1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
   2. `git add` _(para adicionar arquivos ao stage do Git)_
   3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
-  4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
-  5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
+  5. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
+  4. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
 
 ---
-
-## Depois de terminar o desenvolvimento (OPCIONAL)
-
-Para sinalizar que o seu projeto está pronto para o _"Code Review"_ dos seus colegas, faça o seguinte:
-
-- Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas:
-
-  - No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**;
-
-  - No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**;
-
-  - No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-0x`.
-
-Caso tenha alguma dúvida, [aqui tem um video explicativo](https://vimeo.com/362189205).
-
----
-
-## Revisando um pull request
-
-Use o conteúdo sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os _Pull Requests_.
-
-#VQV
 
 # Como desenvolver
 
@@ -297,6 +282,36 @@ Você pode também instalar o plugin do `ESLint` no `VSCode`, bastar ir em exten
 
 ---
 
+## Testes
+
+Usaremos o [Jest]() e o [Frisby] para fazer os testes de api.
+
+Este projeto já vem configurado e com suas dependências
+
+Para poder executar os testes basta executar comando `npm tests` e o resultado será igual o abaixo:
+
+![Testes](./public/testejestfrisby.png)
+
+## Dica: desativando testes
+
+Especialmente no início, quando a maioria dos testes está falhando, a saída após executar os testes é bastante poluída. Você pode desabilitar temporariamente um teste utilizando a função `skip` junto à função `it`. Como o nome indica, esta função "pula" um teste:
+
+```js
+it.skip('it includes the text `Movie Cards Library` inside a h1 tag', () => {
+  wrapper = shallow(<Header />);
+
+  expect(wrapper.find('header h1').text()).toBe('Movie Cards Library');
+});
+```
+
+Na saída da execução dos testes, você verá um <img src="./public/orange-circle.png" width="15px"> indicando que o teste está sendo pulado:
+
+![image](./public/skipped-test.png)
+
+Uma estratégia é pular todos os testes no início e ir implementando um teste de cada vez, removendo dele a função `skip`.
+
+⚠️ Lembre-se de não entregar o projeto com nenhum teste ignorado. Testes ignoradados serão tratados como testes falhando.
+
 ## Lista de requisitos
 
 ### 1 - Crie um endpoint para o cadastro de produtos
@@ -330,7 +345,7 @@ O projeto deve rodar na porta `http://localhost/3000`
 
 ![Criar produtos](./public/criarProdutos.png)
 
-#### Validações importantes:
+#### Observações Técnicas:
 
 - `name` deve ser uma _string_ com mais de 5 caracteres e deve ser único;
 
@@ -340,45 +355,44 @@ O projeto deve rodar na porta `http://localhost/3000`
 
 - A resposta do endpoint em caso de sucesso deve ser o produto criado.
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que não é possível criar um produto com o nome menor que 5 caracteres]**
-
-Se o produto tiver o nome menor que cinco caracteres o resultado retornado deverá ser conforme exibido abaixo, com um status http `422`:
+- Será validado que não é possível criar um produto com o nome menor que 5 caracteres
+  - Se o produto tiver o nome menor que cinco caracteres o resultado retornado deverá ser conforme exibido abaixo, com um status http `422`:
 
 ![Nome menor que 5](./public/nomeMenorQue5.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível criar um produto com o mesmo nome de outro já existente]**
+- Será validado que não é possível criar um produto com o mesmo nome de outro já existente
 
-Se o produto tiver o mesmo nome o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  -  Se o produto tiver o mesmo nome o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Mesmo nome](./public/mesmonome.png)
 
-**[Será validado que não é possível criar um produto com quantidade menor que zero]**
+- Será validado que não é possível criar um produto com quantidade menor que zero
 
-Se o produto tiver uma quantidade menor que zero o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+    - Se o produto tiver uma quantidade menor que zero o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Menor que 0](./public/menorque0.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível criar um produto com quantidade igual a zero]**
+- Será validado que não é possível criar um produto com quantidade igual a zero
 
-Se o produto tiver uma quantidade igual a zero o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se o produto tiver uma quantidade igual a zero o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Igual a zero](./public/igualazero.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível criar um produto com uma string no campo quantidade]**
+- Será validado que não é possível criar um produto com uma string no campo quantidade
 
-Se o produto tiver uma quantidade com o valor em string o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se o produto tiver uma quantidade com o valor em string o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Quantidade como string](./public/quantidadecomostring.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que é possível criar um produto com sucesso]**
+- Será validado que é possível criar um produto com sucesso
 
-Se o produto for cadastrado com sucesso o resultado retornado deverá ser conforme exibido abaixo, com status http `201`:
+  - Se o produto for cadastrado com sucesso o resultado retornado deverá ser conforme exibido abaixo, com status http `201`:
 
 ![Criar produtos](./public/criarProdutos.png)
 
@@ -390,23 +404,23 @@ Se o produto for cadastrado com sucesso o resultado retornado deverá ser confor
 
 - Através do caminho `/products/:id`, apenas o produto com o `id` presente na URL deve ser retornado;
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que todos produtos estão sendo retornados]**
+- Será validado que todos produtos estão sendo retornados
 
-Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Lista de produtos](./public/listadeprodutos.png)
 
-**[Será validado que é possível listar um determinado produto]**
+- Será validado que é possível listar um determinado produto
 
-Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se a lista retornar com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Listar um produto](./public/produtoespecifico.png)
 
-**[Será validado que não é possível listar um produto que não existe]**
+- Será validado que não é possível listar um produto que não existe
 
-Se a lista retornar com falha, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a lista retornar com falha, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Produto não existe](./public/produtonaoexiste.png)
 
@@ -418,39 +432,39 @@ Se a lista retornar com falha, o resultado retornado deverá ser conforme exibid
 
 - Apenas o produto com o `id` presente na URL deve ser atualizado;
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que não é possível atualizar um produto com o nome menor que 5 caracteres]**
+- Será validado que não é possível atualizar um produto com o nome menor que 5 caracteres
 
-Se o produto tiver o nome menor que cinco caracteres, o resultado retornado deverá ser conforme exibido abaixo, com status `422`:
+  - Se o produto tiver o nome menor que cinco caracteres, o resultado retornado deverá ser conforme exibido abaixo, com status `422`:
 
 ![Atualizar com nome menor que cinco](./public/atualizarcomnomemenorque5.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível atualizar um produto com quantidade menor que zero]**
+- Será validado que não é possível atualizar um produto com quantidade menor que zero
 
-Se o produto tiver o quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se o produto tiver o quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar menor que zero](./public/atualizarmenorque0.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível atualizar um produto com quantidade igual a zero]**
+- Será validado que não é possível atualizar um produto com quantidade igual a zero
 
-Se o produto tiver o quantidade igual a zero, o resultado mostrado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se o produto tiver o quantidade igual a zero, o resultado mostrado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar igual a zero](./public/atualizarigual0.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que não é possível atualizar um produto com uma string no campo quantidade]**
+- Será validado que não é possível atualizar um produto com uma string no campo quantidade
 
-Se o produto tiver o quantidade como string, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se o produto tiver o quantidade como string, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar com string](./public/atualizarcomostring.png)
 (As contrabarras `\` estão escapando as aspas de dentro da string)
 
-**[Será validado que é possível atualizar um produto com sucesso]**
+- Será validado que é possível atualizar um produto com sucesso]**
 
-Se o produto atualizado com sucesso, o resultado mostrretornadoado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se o produto atualizado com sucesso, o resultado mostrretornadoado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Atualizado com sucesso](./public/atualizarcomsucesso.png)
 
@@ -460,17 +474,17 @@ Se o produto atualizado com sucesso, o resultado mostrretornadoado deverá ser c
 
 - Apenas o produto com o `id` presente na URL deve ser deletado;
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que não é possível deletar um produto com sucesso]**
+- Será validado que não é possível deletar um produto com sucesso
 
-Se o produto deletado com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se o produto deletado com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Deletar um produto](./public/deletarumproduto.png)
 
-**[Será validado que não é possível deletar um produto que não existe]**
+- Será validado que não é possível deletar um produto que não existe
 
-Se o produto não for deletado com sucesso, o resultado retornado deverá ser esse e com status http `422`:
+  - Se o produto não for deletado com sucesso, o resultado retornado deverá ser esse e com status http `422`:
 
 ![Deletar um produto que não existe](./public/deletarumprodutoquenaoexiste.png)
 
@@ -508,6 +522,8 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 }
 ```
 
+#### Observações Técnicas:
+
 - O `productId` devem ser igual ao `id` de um produto anteriormente cadastrado;
 
 - `quantity` deve ser um número inteiro maior que 0;
@@ -516,35 +532,35 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 
 - A resposta do endpoint em caso de sucesso deve ser a(s) venda(s) criada(s).
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que não é possível cadastrar vendas com quantidade menor que zero]**
+- Será validado que não é possível cadastrar vendas com quantidade menor que zero
 
-Se a venda tiver uma quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a venda tiver uma quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Vendas menor que zero](./public/comprasmenorquezero.png)
 
-**[Será validado que não é possível cadastrar vendas com quantidade igual a zero]**
+- Será validado que não é possível cadastrar vendas com quantidade igual a zero
 
-Se a venda tiver uma quantidade igual a zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a venda tiver uma quantidade igual a zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Vendas igual a zero](./public/comprasigualazero.png)
 
-**[Será validado que não é possível cadastrar vendas com uma string no campo quantidade]**
+- Será validado que não é possível cadastrar vendas com uma string no campo quantidade
 
-Se a venda tiver uma quantidade com valor, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a venda tiver uma quantidade com valor, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Vendas com string](./public/comprascomstring.png)
 
-**[Será validado que é possível criar uma venda com sucesso]**
+- Será validado que é possível criar uma venda com sucesso
 
-Se a venda foi feita com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se a venda foi feita com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Cadastro de venda com sucesso](./public/cadastrodevendacomsucesso.png)
 
-**[Será validado que é possível criar várias vendas com sucesso]**
+- Será validado que é possível criar várias vendas com sucesso
 
-Se as vendas foi feita com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se as vendas foi feita com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Cadastrar varias compras](./public/variascompras.png)
 
@@ -556,23 +572,23 @@ Se as vendas foi feita com sucesso, o resultado retornado deverá ser conforme e
 
 - Através do caminho `/sales/:id`, apenas a venda com o `id` presente na URL deve ser retornada;
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que todas as vendas estão sendo retornadas]**
+- Será validado que todas as vendas estão sendo retornadas
 
-Se todas vendas estão sendo listadas, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se todas vendas estão sendo listadas, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Listar todas as vendas](./public/todasvendas.png)
 
-**[Será validado que é possível listar uma determinada vendas]**
+- Será validado que é possível listar uma determinada vendas
 
-Se a venda esta sendo listada, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+ - Se a venda esta sendo listada, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Listar uma venda](./public/listaumavenda.png)
 
-**[Será validado que não é possível listar uma venda inexistente]**
+- Será validado que não é possível listar uma venda inexistente
 
-Se a venda não esta sendo listada, o resultado retornado deverá ser conforme exibido abaixo, com status http `404`:
+  - Se a venda não esta sendo listada, o resultado retornado deverá ser conforme exibido abaixo, com status http `404`:
 
 ![Listar uma venda que não existe](./public/vendanaoexiste.png)
 
@@ -595,29 +611,29 @@ Se a venda não esta sendo listada, o resultado retornado deverá ser conforme e
 
 - Apenas a venda com o `id` presente na URL deve ser atualizada;
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que não é possível atualizar vendas com quantidade menor que zero]**
+- Será validado que não é possível atualizar vendas com quantidade menor que zero
 
-Se a venda tiver uma quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a venda tiver uma quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar venda menor que zero](./public/atualizarvendamenorquezero.png)
 
-**[Será validado que não é possível atualizar vendas com quantidade igual a zero]**
+- Será validado que não é possível atualizar vendas com quantidade igual a zero
 
-Se a venda tiver uma quantidade igual a zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a venda tiver uma quantidade igual a zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar venda igual zero](./public/atualizarvendaigualzero.png)
 
-**[Será validado que não é possível atualizar vendas com uma string no campo quantidade]**
+- Será validado que não é possível atualizar vendas com uma string no campo quantidade
 
-Se a venda tiver uma quantidade do tipo string, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a venda tiver uma quantidade do tipo string, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Atualizar venda com string](./public/atualizarvendacomstring.png)
 
-**[Será validado que é possível atualizar uma vendas com sucesso]**
+- Será validado que é possível atualizar uma vendas com sucesso
 
-Se a venda for atualizada com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
+  - Se a venda for atualizada com sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
 ![Atualizar uma venda com sucesso](./public/atualizarvendacomsucesso.png)
 
@@ -627,17 +643,17 @@ Se a venda for atualizada com sucesso, o resultado retornado deverá ser conform
 
 - Apenas a venda com o `id` presente na URL deve ser deletado;
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que é possível deletar uma venda com sucesso]**
+- Será validado que é possível deletar uma venda com sucesso
 
-Se a venda foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200` e será verificado depois que a venda não existe e deverar retornar http `404`:
+  - Se a venda foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200` e será verificado depois que a venda não existe e deverar retornar http `404`:
 
 ![Deletar uma venda com sucesso](./public/deletarumavendacomsucesso.png)
 
-**[Será validado que não é possível deletar uma venda que não existe]**
+- Será validado que não é possível deletar uma venda que não existe
 
-Se a venda não foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
+  - Se a venda não foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `422`:
 
 ![Deletar uma venda que não existe](./public/deletarumavendaquenaoexiste.png)
 
@@ -649,15 +665,15 @@ Se a venda não foi deletada sucesso, o resultado retornado deverá ser conforme
 
 - Por exemplo: suponha que haja um produto chamado _Bola de Futebol_ e a sua propriedade `quantity` tenha o valor _10_. Caso seja feita uma venda com _8_ unidades desse produto, a quantidade do produto deve ser atualizada para _2_ , pois 10 - 8 = 2;
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que é possível a quantidade do produto atualize ao fazer uma compra]**
+- Será validado que é possível a quantidade do produto atualize ao fazer uma compra
 
-Ao fazer uma determinada venda, a quantidade do produto deverá ser atualizada.
+  - Ao fazer uma determinada venda, a quantidade do produto deverá ser atualizada.
 
-**[Será validado que é possível a quantidade do produto atualize ao deletar uma compra]**
+- Será validado que é possível a quantidade do produto atualize ao deletar uma compra
 
-Ao fazer deletar uma determinada venda, a quantidade do produto deverá ser atualizada para a quantidade que tinha antes de ter feito essa venda.
+  - Ao fazer deletar uma determinada venda, a quantidade do produto deverá ser atualizada para a quantidade que tinha antes de ter feito essa venda.
 
 ### 10 - Valide a quantidade de produtos
 
@@ -665,13 +681,36 @@ Ao fazer deletar uma determinada venda, a quantidade do produto deverá ser atua
 
 - Quando uma venda for realizada, garanta que a quantidade sendo vendida está disponível no estoque
 
-#### Além disso,as seguintes verificações serão feitas:
+**O que será verificado:**
 
-**[Será validado que o estoque do produto nunca fique com a quantidade menor que zero]**
+- Será validado que o estoque do produto nunca fique com a quantidade menor que zero
 
-Um produto não poderá ficar com a quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `404`:
+  - Um produto não poderá ficar com a quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `404`:
 
 ![Compra maior que a quantidade](./public/compramaiorqueaquantidade.png)
+
+---
+
+## Depois de terminar o desenvolvimento
+
+Para **"entregar"** seu projeto, siga os passos a seguir:
+
+* Vá até a página **DO SEU** _Pull Request_, adicione a label de _"code-review"_ e marque seus colegas
+  * No menu à direita, clique no _link_ **"Labels"** e escolha a _label_ **code-review**
+  * No menu à direita, clique no _link_ **"Assignees"** e escolha **o seu usuário**
+  * No menu à direita, clique no _link_ **"Reviewers"** e digite `students`, selecione o time `tryber/students-sd-00`
+
+Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
+
+⚠ Lembre-se que garantir que todas as _issues_ comentadas pelo **Lint** estão resolvidas! ⚠
+
+---
+
+## Revisando um pull request
+
+À medida que você e as outras pessoas que estudam na Trybe forem entregando os projetos, vocês receberão um alerta via Slack para também fazer a revisão dos Pull Requests dos seus colegas. Fiquem atentos às mensagens do "Pull Reminders" no Slack!
+
+Use o material que você já viu sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os projetos que chegaram para você.
 
 ---
 
