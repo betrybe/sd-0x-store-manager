@@ -1,7 +1,7 @@
 const frisby = require('frisby');
 const { MongoClient } = require('mongodb');
 
-const mongoDbUrl = 'mongodb://localhost:27017';
+const mongoDbUrl = 'mongodb://mongodb:27017';
 const url = 'http://localhost:3000';
 
 describe('9 - Atualize a quantidade de produtos', () => {
