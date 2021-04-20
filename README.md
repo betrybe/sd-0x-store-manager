@@ -580,7 +580,7 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 
 ![Listar todas as vendas](./public/todasvendas.png)
 
-- Será validado que é possível listar uma determinada vendas
+- Será validado que é possível listar uma determinada venda
 
  - Se a venda esta sendo listada, o resultado retornado deverá ser conforme exibido abaixo, com status http `200`:
 
