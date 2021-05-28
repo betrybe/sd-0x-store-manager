@@ -27,7 +27,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 - [Requisitos do projeto](#requisitos-do-projeto)
   - [Linter](#linter)
   - [Lista de requisitos](#lista-de-requisitos)
- 
+
     `Obrigatórios`
     - [1 - Crie um endpoint para o cadastro de produtos](#1---crie-um-endpoint-para-o-cadastro-de-produtos)
     - [2 - Crie um endpoint para listar os produtos](#2---crie-um-endpoint-para-listar-os-produtos)
@@ -37,10 +37,10 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
     - [6 - Crie um endpoint para listar as vendas](#6---crie-um-endpoint-para-listar-as-vendas)
     - [7 - Crie um endpoint para atualizar uma venda](#7---crie-um-endpoint-para-atualizar-uma-venda)
     - [8 - Crie um endpoint para deletar uma venda](#8---crie-um-endpoint-para-deletar-uma-venda)
-
-    `Bônus`
     - [9 - Atualize a quantidade de produtos](#9---atualize-a-quantidade-de-produtos)
     - [10 - Valide a quantidade de produtos](#10---valide-a-quantidade-de-produtos)
+
+    `Bônus`
 - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
 - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
@@ -200,6 +200,14 @@ Atenção :warning: Não rode o comando npm audit fix! Ele atualiza várias depe
 - Garanta que seus endpoints sempre retornem uma resposta, havendo sucesso nas operações ou não.
 
 - Retorne os códigos de status corretos (recurso criado, erro de validação, autorização, etc).
+
+### Cada camada da sua API deve estar em sua respectiva pasta
+
+- Models devem estar na pasta `models`, **na raiz do projeto**
+
+- Services devem estar na pasta `services`, **na raiz do projeto**
+
+- Controllers devem estar na pasta `controllers`, **na raiz do projeto**
 
 ## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
 
@@ -657,8 +665,6 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 
 ![Deletar uma venda que não existe](./public/deletarumavendaquenaoexiste.png)
 
-## Bônus
-
 ### 9 - Atualize a quantidade de produtos
 
 - Ao realizar uma venda, atualizá-la ou deletá-la, você deve também atualizar a quantidade do produto em questão presente na `collection` responsável pelos produtos;
@@ -688,6 +694,32 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
   - Um produto não poderá ficar com a quantidade menor que zero, o resultado retornado deverá ser conforme exibido abaixo, com status http `404`:
 
 ![Compra maior que a quantidade](./public/compramaiorqueaquantidade.png)
+
+## Bônus
+
+## 11 - Escreva testes para seus models
+
+- Utilize o mocha, chai e sinon para escrever seus testes
+
+- Coloque todos os testes de models no arquivo `test/unit/models.js`
+
+- Será validado que cobertura total das linhas dos arquivos na pasta `models` é maior ou igual a 80%
+
+## 12 - Escreva testes para seus services
+
+- Utilize o mocha, chai e sinon para escrever seus testes
+
+- Coloque todos os testes de services no arquivo `test/unit/services.js`
+
+- Será validado que cobertura total das linhas dos arquivos na pasta `services` é maior ou igual a 80%
+
+## 13 - Escreva testes para seus controllers
+
+- Utilize o mocha, chai e sinon para escrever seus testes
+
+- Coloque todos os testes de controllers no arquivo `test/unit/controllers.js`
+
+- Será validado que cobertura total das linhas dos arquivos na pasta `controllers` é maior ou igual a 80%
 
 ---
 
