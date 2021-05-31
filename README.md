@@ -42,9 +42,9 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
     `Bônus`
     
-- [11 - Escreva testes para seus models](#11---escreva-testes-para-seus-models)
-- [12 - Escreva testes para seus services](#12---escreva-testes-para-seus-services)
-- [13 - Escreva testes para seus controllers](#13---escreva-testes-para-seus-controllers)
+    - [11 - Escreva testes para seus models](#11---escreva-testes-para-seus-models)
+    - [12 - Escreva testes para seus services](#12---escreva-testes-para-seus-services)
+    - [13 - Escreva testes para seus controllers](#13---escreva-testes-para-seus-controllers)
 - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
 - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
