@@ -213,7 +213,7 @@ Atenção :warning: Não rode o comando npm audit fix! Ele atualiza várias depe
 
 - Controllers devem estar na pasta `controllers`, **na raiz do projeto**
 
-## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
+### Arquivo index.js
 
 Há um arquivo `index.js` no repositório. Não remova, nele, o seguinte trecho de código:
 
@@ -227,7 +227,7 @@ Isso está configurado para o avaliador funcionar.
 
 ### Conexão com o Banco:
 
-A conexão do banco local devera conter os seguintes parâmetros:
+A conexão do banco local deverá conter os seguintes parâmetros:
 
 ```javascript
 const MONGO_DB_URL = 'mongodb://localhost:27017/StoreManager';
