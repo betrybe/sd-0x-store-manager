@@ -83,15 +83,15 @@ A API a ser construída trata-se de um sistema de gerenciamento de vendas, onde 
 
 ## Desenvolvimento
 
-Você vai desenvolver todas as camadas da API (Models, Service caso necessário, e Controllers).
+Você vai desenvolver todas as camadas da API (Models, Services caso necessário, e Controllers).
 
-Através dessa aplicação, será possível realizar as operações básicas que se pode fazer em um determinado banco de dados: Criação, Leitura, Atualização e Exclusão (ou `CRUD`, pros mais íntimos 😜).
+Através dessa aplicação, será possível realizar as operações básicas que se pode fazer em um determinado banco de dados: Criação, Leitura, Atualização e Exclusão (ou `CRUD`, para as pessoas mais mais íntimas 😜).
 
 Você deve utilizar o banco MongoDB para a gestão de dados. Além disso, a API deve ser RESTful.
 
 ⚠️ **Dicas Importantes** ⚠️:
 
-- Deve ser possível que o usuário, independente de cadastramento ou login, possa adicionar, ler, deletar e atualizar produtos no seu estoque. O usuário deve poder também enviar vendas para o sistema. Essas vendas devem validar se o produto em questão existe. Deve, também, ser possível ler, deletar e atualizar vendas.
+- Deve ser possível que a pessoa usuária, independente de cadastramento ou login, possa adicionar, ler, deletar e atualizar produtos no seu estoque. O usuário deve poder também enviar vendas para o sistema. Essas vendas devem validar se o produto em questão existe. Deve, também, ser possível ler, deletar e atualizar vendas.
 
 - Para **todos os endpoints** garanta que:
 
