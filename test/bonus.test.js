@@ -8,7 +8,7 @@ const exec = util.promisify(callbackExec);
 const mongoDbUrl = 'mongodb://localhost:27017';
 const url = 'http://localhost:3000';
 const NPX_NYC_COMMAND =
-  'npx nyc --all --include controllers --reporter json-summary mocha test/unit';
+  (unit) => `npx nyc --all --include ${unit} --reporter json-summary mocha test/unit/${unit}.js --exit`;
 
 function readCoverageFile() {
   const COVERAGE_FILE_PATH = path.join(__dirname, '..', 'coverage', 'coverage-summary.json');
@@ -17,11 +17,11 @@ function readCoverageFile() {
 
 describe('11 - Escreva testes para seus models', () => {
   beforeAll(async () => {
-    await exec(`${NPX_NYC_COMMAND}/models.js`);
+    await exec(NPX_NYC_COMMAND('models'));
   });
 
   afterAll(async () => {
-    await exec('rm -rf coverage');
+    await exec('rm -rf coverage .nyc_output');
   });
 
   it('Será validado que cobertura total das linhas dos arquivos na pasta `models` é maior ou igual a 80%', async () => {
@@ -32,11 +32,11 @@ describe('11 - Escreva testes para seus models', () => {
 
 describe('12 - Escreva testes para seus services', () => {
   beforeAll(async () => {
-    await exec(`${NPX_NYC_COMMAND}/services.js`);
+    await exec(NPX_NYC_COMMAND('services'));
   });
 
   afterAll(async () => {
-    await exec('rm -rf coverage');
+    await exec('rm -rf coverage .nyc_output');
   });
 
   it('Será validado que cobertura total das linhas dos arquivos na pasta `services` é maior ou igual a 80%', async () => {
@@ -47,11 +47,11 @@ describe('12 - Escreva testes para seus services', () => {
 
 describe('13 - Escreva testes para seus controllers', () => {
   beforeAll(async () => {
-    await exec(`${NPX_NYC_COMMAND}/controllers.js`);
+    await exec(NPX_NYC_COMMAND('controllers'));
   });
 
   afterAll(async () => {
-    await exec('rm -rf coverage');
+    await exec('rm -rf coverage .nyc_output');
   });
 
   it('Será validado que cobertura total das linhas dos arquivos na pasta `controllers` é maior ou igual a 80%', async () => {
