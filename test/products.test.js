@@ -133,6 +133,7 @@ describe('1 - Crie um endpoint para o cadastro de produtos', () => {
         const quantityProduct = body.quantity;
         expect(productName).toEqual('Arco do Gavião Arqueiro');
         expect(quantityProduct).toEqual(1);
+        expect(body).toHaveProperty('_id');
       });
   });
 });
