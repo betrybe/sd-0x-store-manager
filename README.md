@@ -322,7 +322,7 @@ Na saída da execução dos testes, você verá um <img src="./public/orange-cir
 
 Uma estratégia é pular todos os testes no início e ir implementando um teste de cada vez, removendo dele a função `skip`.
 
-⚠️ Lembre-se de não entregar o projeto com nenhum teste ignorado. Testes ignoradados serão tratados como testes falhando.
+⚠️ Lembre-se de não entregar o projeto com nenhum teste ignorado. Testes ignorados serão tratados como testes falhando.
 
 ## Lista de requisitos
 
@@ -659,7 +659,7 @@ O retorno de uma venda cadastrada com sucesso deverá ser:
 
 - Será validado que é possível deletar uma venda com sucesso
 
-  - Se a venda foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200` e será verificado depois que a venda não existe e deverar retornar http `404`:
+  - Se a venda foi deletada sucesso, o resultado retornado deverá ser conforme exibido abaixo, com status http `200` e será verificado depois que a venda não existe, com um GET nesse `id`, e este deverá retornar status http `404`, como é validado no requisito 6:
 
 ![Deletar uma venda com sucesso](./public/deletarumavendacomsucesso.png)
 
